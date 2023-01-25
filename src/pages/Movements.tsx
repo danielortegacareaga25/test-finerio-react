@@ -9,7 +9,7 @@ import { logOut, selectCurrentUser } from "../store/reducers/auth.reducer";
 import { ListMovements } from "../components/ListMovements";
 
 export const Movements = () => {
-  const [getMe, { isLoading }] = useGetMeMutation();
+  const [getMe, { isLoading, isError }] = useGetMeMutation();
   const dispatch = useDispatch();
   const selectorUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
@@ -20,10 +20,10 @@ export const Movements = () => {
   };
 
   useEffect(() => {
-    if (!isLoading && !selectorUser?.id) {
+    if (!isLoading && !selectorUser?.id && !isError) {
       getMe({});
     }
-  }, [getMe, isLoading, selectorUser]);
+  }, [getMe, isLoading, selectorUser, isError]);
 
   return (
     <Grid
