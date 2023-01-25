@@ -26,7 +26,7 @@ const movementSlice = createSlice({
       state.movements = [...state.movements, ...movements];
       state.offSet = state.movements.length;
       state.max = state.movements.length + 10;
-      state.moreItems = movements.length ? false : true;
+      state.moreItems = movements.length ? true : false;
     },
   },
 });

@@ -9,7 +9,7 @@ import { logOut, selectCurrentUser } from "../store/reducers/auth.reducer";
 import { ListMovements } from "../components/ListMovements";
 
 export const Movements = () => {
-  const [getMe, { isLoading, isSuccess }] = useGetMeMutation();
+  const [getMe, { isLoading }] = useGetMeMutation();
   const dispatch = useDispatch();
   const selectorUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
