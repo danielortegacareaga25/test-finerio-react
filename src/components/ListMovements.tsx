@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 import InfiniteScroll from "react-infinite-scroll-component";
-import PersonIcon from "@mui/icons-material/Person";
+import MoneyIcon from "@mui/icons-material/Money";
 import { selectMovements } from "../store/reducers/movements.reducer";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../store/reducers/auth.reducer";
@@ -63,7 +63,7 @@ export const ListMovements = () => {
             <ListItem key={idx} sx={{ padding: "20px" }}>
               <ListItemAvatar>
                 <Avatar>
-                  <PersonIcon />
+                  <MoneyIcon />
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary="Photos" secondary="Jan 9, 2014" />
