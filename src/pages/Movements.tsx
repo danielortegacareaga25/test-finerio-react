@@ -48,7 +48,7 @@ export const Movements = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      {selectorUser?.id ? <ListMovements /> : <></>}
+      {selectorUser?.id && !isLoading ? <ListMovements /> : <></>}
     </Grid>
   );
 };
