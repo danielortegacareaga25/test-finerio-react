@@ -22,8 +22,9 @@ const movementSlice = createSlice({
   reducers: {
     setMovements: (state, { payload }) => {
       const movements = payload;
+      console.log("payload", payload);
       state.movements = [...state.movements, ...movements];
-      state.offSet = movements.length;
+      state.offSet = state.movements.length;
       state.max = state.movements.length + 10;
       state.moreItems = movements.length ? false : true;
     },
