@@ -9,9 +9,9 @@ export const Navigation = () => {
     <Routes>
       <Route path="/" element={<Login />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="movements" element={<Movements />} />
-      </Route>
+      {/* <Route element={<ProtectedRoute />}> */}
+      <Route path="movements" element={<Movements />} />
+      {/* </Route> */}
     </Routes>
   );
 };

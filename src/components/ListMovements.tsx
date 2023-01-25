@@ -9,9 +9,10 @@ import {
 } from "@mui/material";
 
 import InfiniteScroll from "react-infinite-scroll-component";
-import MoneyIcon from "@mui/icons-material/Money";
 import { selectMovements } from "../store/reducers/movements.reducer";
 import { useSelector } from "react-redux";
+import MoneyIcon from "@mui/icons-material/Money";
+import MoneyRoundedIcon from "@mui/icons-material/MoneyRounded";
 import { selectCurrentUser } from "../store/reducers/auth.reducer";
 import { useGetMovementsMutation } from "../store/api/movements";
 import { useEffect } from "react";
@@ -59,14 +60,19 @@ export const ListMovements = () => {
           hasMore={selectorMovement.moreItems}
           loader={<h4>Loading...</h4>}
         >
-          {selectorMovement.movements.map((_, idx) => (
+          {selectorMovement.movements.map((movement, idx) => (
             <ListItem key={idx} sx={{ padding: "20px" }}>
               <ListItemAvatar>
                 <Avatar>
-                  <MoneyIcon />
+                  <MoneyRoundedIcon
+                    color={movement.type === "CHARGE" ? "warning" : "success"}
+                  />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+              <ListItemText
+                primary={movement.description}
+                secondary={`$${movement.amount}`}
+              />
             </ListItem>
           ))}
         </InfiniteScroll>
