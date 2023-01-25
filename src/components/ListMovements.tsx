@@ -24,12 +24,10 @@ export const ListMovements = () => {
   const [getMovements, { isLoading }] = useGetMovementsMutation();
 
   useEffect(() => {
-    console.log("ingreso");
+    getMovementsApi();
   }, []);
 
   const getMovementsApi = () => {
-    console.log(selectorUser);
-    console.log(selectorMovement);
     if (selectorUser?.id && !isLoading && selectorMovement.moreItems) {
       getMovements({
         id: selectorUser.id,
