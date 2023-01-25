@@ -32,8 +32,8 @@ export const Login = () => {
   const [login, { isSuccess, isError }] = useLoginMutation();
   const formik = useFormik({
     initialValues: {
-      email: "danielortegacareaga@gmail.com",
-      password: "Finerio@123",
+      email: "",
+      password: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
