@@ -2,16 +2,17 @@ import { AppBar, Button, Grid, Toolbar, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useGetMeMutation } from "../store/api/user";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut, selectCurrentUser } from "../store/reducers/auth.reducer";
 import { ListMovements } from "../components/ListMovements";
 
 export const Movements = () => {
-  const [getMe, { isLoading, isError }] = useGetMeMutation();
+  const [getMe, { isError }] = useGetMeMutation();
   const dispatch = useDispatch();
   const selectorUser = useSelector(selectCurrentUser);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const exit = () => {
@@ -21,7 +22,11 @@ export const Movements = () => {
 
   useEffect(() => {
     if (!isLoading && !selectorUser?.id && !isError) {
+      setIsLoading(true);
       getMe({});
+    }
+    if (selectorUser?.id) {
+      setIsLoading(false);
     }
   }, [getMe, isLoading, selectorUser, isError]);
 
